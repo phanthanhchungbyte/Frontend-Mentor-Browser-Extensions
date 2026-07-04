@@ -1,77 +1,81 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Browser extensions manager UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A solution to the [Browser extensions manager UI challenge](https://www.frontendmentor.io/challenges/browser-extension-manager-ui-yNZnOfsMAp) on Frontend Mentor. A dashboard for managing browser extensions — toggle active states, filter by status, remove extensions, and switch between light/dark themes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Toggle extensions between active and inactive states
+- Filter extensions by **All**, **Active**, or **Inactive**
+- Remove extensions from the list
+- Light / dark theme toggle (persisted in localStorage, respects OS preference)
+- Responsive layout (mobile-first, adapts from 375px to large screens)
+- Hover and focus states on all interactive elements
 
-## React Compiler
+## Built with
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React 19** with TypeScript
+- **Vite 8** (build tool with HMR)
+- React Compiler enabled
+- CSS (custom properties, media queries)
+- Context API for state management (theme, filter, extensions list)
+- ESLint + Prettier
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project structure
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+src/
+├── main.tsx                   # Entry point
+├── App.tsx                    # Root layout
+├── index.css / App.css        # Global and app-level styles
+├── context/
+│   ├── ThemeContext.tsx        # Light/dark theme context
+│   └── ListBodyContext.ts      # Extensions list context
+├── components/
+│   └── ui/
+│       ├── FilterButton.tsx    # Reusable filter toggle button
+│       └── list/
+│           ├── ListBody.tsx    # List wrapper (provides context)
+│           └── hooks/
+│               └── useExtensions.tsx  # Custom hook for list state & filters
+├── features/
+│   ├── nav/
+│   │   └── Navbar.tsx         # Navigation bar with logo & theme toggle
+│   ├── filter/
+│   │   └── FilterBar.tsx      # All / Active / Inactive filter bar
+│   └── list/
+│       ├── ExtensionList.tsx   # Card grid container
+│       ├── ExtensionCard.tsx   # Individual extension card
+│       └── utils/
+│           └── FilterExtensions.ts  # Filter logic
+├── data/
+│   └── data.ts                # Extension seed data
+└── types/
+    └── utils.ts               # TypeScript utility types
 ```
+
+## Getting started
+
+```bash
+pnpm install
+pnpm run dev      # Start dev server (Vite HMR)
+pnpm run build    # Type-check + production build
+pnpm run preview  # Preview production build
+pnpm run lint     # Run ESLint
+```
+
+## Challenge requirements
+
+Users should be able to:
+
+- Toggle extensions between active and inactive states
+- Filter active and inactive extensions
+- Remove extensions from the list
+- Select their color theme
+- View the optimal layout depending on device screen size
+- See hover and focus states for all interactive elements
+
+## Design
+
+- **Mobile**: 375px | **Desktop**: 1440px
+- **Font**: [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) (400, 500, 700)
+- **Colors**: Neutral palette (`hsl(227, 75%, 14%)` through `hsl(200, 60%, 99%)`), Red accents (`hsl(3, 86%, 64%)` etc.), light/dark gradient backgrounds
