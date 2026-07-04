@@ -2,8 +2,8 @@ import { useExtensions } from "@components/ui/list/hooks/useExtensions.tsx";
 import { ListBodyContext } from "context/ListBodyContext.ts";
 
 export default function ListBody({
-	children,
-}: {
+																	 children
+																 }: {
 	children: React.ReactNode[];
 }) {
 	const {
@@ -11,7 +11,7 @@ export default function ListBody({
 		setActiveFilter,
 		handleSetFilter,
 		setCurExtensions,
-		curExtensions,
+		curExtensions
 	} = useExtensions();
 
 	return (
@@ -23,7 +23,7 @@ export default function ListBody({
 					handleSetFilter: handleSetFilter,
 					extensions: curExtensions,
 					setExtensions: setCurExtensions,
-					theme: "dark",
+					theme: "dark"
 				}}
 			>
 				{children}

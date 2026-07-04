@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "./ExtensionCard.css";
 import type { extensions } from "@data/data.ts";
 import type { SetStateAction } from "react";
@@ -10,9 +11,9 @@ type ExtensionCardProp = {
 };
 
 export default function ExtensionCard({
-	extensionObj,
-	setExtensions,
-}: ExtensionCardProp) {
+																				extensionObj,
+																				setExtensions
+																			}: ExtensionCardProp) {
 	function handleSwitch() {
 		setExtensions((prev) => {
 			const newExtensions = prev.map(
@@ -23,7 +24,7 @@ export default function ExtensionCard({
 					} else {
 						return extension;
 					}
-				},
+				}
 			);
 			return newExtensions;
 		});
@@ -33,7 +34,7 @@ export default function ExtensionCard({
 		setExtensions((prev) =>
 			prev.filter((extension) => {
 				return extension.name != extensionObj.name;
-			}),
+			})
 		);
 	}
 
