@@ -1,0 +1,7 @@
+.extension-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    margin-top: 2rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}

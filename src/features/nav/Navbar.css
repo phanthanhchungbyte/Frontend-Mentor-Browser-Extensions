@@ -1,0 +1,45 @@
+.navbar {
+    background-color: var(--neutral-0);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.navbar__logo {
+    color: var(--neutral-100);
+}
+
+.navbar__logo_fill {
+    fill: #040918;
+}
+
+.navbar__text {
+    color: var(--neutral-100);
+}
+
+.navbar__theme_toggle_btn {
+    background-color: var(--neutral-100);
+    border: none;
+    padding: 0.75rem 0.75rem;
+    border-radius: 1rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/*Theming*/
+[data-theme="dark"] {
+    .navbar {
+        background-color: var(--neutral-800);
+    }
+
+    .navbar__logo_fill {
+        fill: var(--neutral-100);
+    }
+
+    .navbar__theme_toggle_btn {
+        background-color: var(--neutral-700);
+    }
+}

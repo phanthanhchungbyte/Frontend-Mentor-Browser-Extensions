@@ -1,0 +1,77 @@
+body {
+    background: var(--light-gradient);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+}
+
+#root {
+    max-width: 100svw;
+    min-height: 100svh;
+}
+
+.wrapper {
+    width: 70%;
+    height: 100%;
+    margin-inline: auto;
+    padding-top: 3rem;
+}
+
+/*Button utility styling*/
+.button {
+    border: 1px solid var(--neutral-300);
+    padding: 0.25rem 0.75rem;
+    font-family: Noto-Medium, sans-serif;
+    border-radius: 2rem;
+    background: var(--neutral-0);
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/*Switch utility styling*/
+.switch-btn {
+    background-color: var(--neutral-600);
+    width: 6ch;
+    height: 3ch;
+    border-radius: 5rem;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+
+    .switch-btn__thumb {
+        position: absolute;
+        height: 80%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: white;
+        top: 50%;
+        transform: translate(0%, -50%);
+        left: 3px; /* Start position */
+        transition: all 0.2s ease-in-out; /* Add transition */
+    }
+}
+
+.switch-btn.active {
+    background-color: var(--red-400);
+
+    .switch-btn__thumb {
+        left: calc(100% - 3px); /* Move to right side */
+        /* 100% = container width, subtract 3px margin, subtract thumb width (80% of container height) */
+        transform: translate(-100%, -50%);
+    }
+}
+
+/*Theming*/
+[data-theme="dark"] {
+    body {
+        background-image: var(--dark-gradient);
+    }
+
+    .button {
+        background: var(--neutral-900);
+        border: 1px solid var(--neutral-600);
+    }
+}
+
